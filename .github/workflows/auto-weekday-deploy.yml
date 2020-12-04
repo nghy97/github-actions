@@ -21,6 +21,16 @@ jobs:
         run: exit 1;
 
       - name: Send slack if completed
+        if: ${{ success() }}
+        uses: ./.github/actions/slack-notify
+        with:
+          region: ${{ matrix.region }}
+          env: dev
+          status: success
+          domain: ${{ matrix.domain }}
+
+      - name: Send slack if completed
+        if: ${{ failure() }}
         uses: ./.github/actions/slack-notify
         with:
           region: ${{ matrix.region }}
