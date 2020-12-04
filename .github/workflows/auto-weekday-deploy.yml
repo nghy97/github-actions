@@ -20,10 +20,10 @@ jobs:
       - name: sdafadsfasdf
         id: get
         run: |
-          echo "::set-output name=env::$(echo previewa)"
+          echo "::set-output name=cancel::$(echo true)"
 
       - name: Send slack if completed
-        if: ${{ success() && steps.get.outputs.env != 'preview' }}
+        if: ${{ success() && steps.get.outputs.cancel != 'true' }}
         uses: ./.github/actions/slack-notify
         with:
           region: ${{ matrix.region }}
@@ -32,7 +32,7 @@ jobs:
           domain: ${{ matrix.domain }}
 
       - name: Send slack if completed
-        if: ${{ failure() && steps.get.outputs.env != 'preview' }}
+        if: ${{ failure() && steps.get.outputs.cancel != 'true' }}
         uses: ./.github/actions/slack-notify
         with:
           region: ${{ matrix.region }}
