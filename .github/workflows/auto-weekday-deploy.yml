@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - region: kor
+          - region: korsadfsadfsadfasdf
             s3Path: s3://kakaowebtoon-web-dev/kor
             domain: co.krㅇㅇ
 
