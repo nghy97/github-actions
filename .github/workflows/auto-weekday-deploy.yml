@@ -12,7 +12,7 @@ jobs:
         include:
           - region: kor
             s3Path: s3://kakaowebtoon-web-dev/kor
-            domain: co.kr
+            domain: co.krㅇㅇ
 
     steps:
       - uses: actions/checkout@v2
