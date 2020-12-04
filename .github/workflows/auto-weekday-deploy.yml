@@ -23,7 +23,7 @@ jobs:
           echo "::set-output name=env::$(echo preview)"
 
       - name: Send slack if completed
-        if: ${{ success() && env != preview }}
+        if: ${{ success() && env != 'preview' }}
         uses: ./.github/actions/slack-notify
         with:
           region: ${{ matrix.region }}
@@ -32,7 +32,7 @@ jobs:
           domain: ${{ matrix.domain }}
 
       - name: Send slack if completed
-        if: ${{ failure() && env != preview }}
+        if: ${{ failure() && env != 'preview' }}
         uses: ./.github/actions/slack-notify
         with:
           region: ${{ matrix.region }}
