@@ -17,8 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: sdafadsfasdf
-        run: exit 1;
+      # - name: sdafadsfasdf
+      #   run: exit 1;
 
       - name: Send slack if completed
         if: ${{ success() }}
