@@ -20,7 +20,7 @@ jobs:
       - name: sdafadsfasdf
         id: get
         run: |
-          echo "::set-output name=cancel::$(echo true)"
+          echo "::set-output name=cancel::$(echo truea)"
 
       - name: Send slack if completed
         if: ${{ success() && steps.get.outputs.cancel != 'true' }}
