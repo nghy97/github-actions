@@ -15,6 +15,8 @@ jobs:
             domain: co.kr
 
     steps:
+      - uses: actions/checkout@v2
+
       - name: Send slack if completed
         uses: ./.github/actions/slack-notify
         with:
