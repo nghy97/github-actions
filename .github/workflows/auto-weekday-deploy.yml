@@ -20,7 +20,7 @@ jobs:
       - name: sdafadsfasdf
         id: get
         run: |
-          echo "::set-output name=env::$(echo preview)"
+          echo "::set-output name=env::$(echo previewa)"
 
       - name: Send slack if completed
         if: ${{ success() && steps.get.outputs.env != 'preview' }}
