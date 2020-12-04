@@ -1,0 +1,24 @@
+name: auto-weekday-deploy
+
+on: push
+
+jobs:
+  auto-weekday-deploy:
+    name: 'Auto Build & Deploy'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          - region: kor
+            s3Path: s3://kakaowebtoon-web-dev/kor
+            domain: co.kr
+
+    steps:
+      - name: Send slack if completed
+        uses: ./.github/actions/slack-notify
+        with:
+          region: ${{ matrix.region }}
+          env: dev
+          status: success
+          domain: ${{ matrix.domain }}
