@@ -19,6 +19,8 @@ jobs:
 
       - name: sdafadsfasdf
         run: |
+          echo ${GITHUB_REPOSITORY}
+          echo ${GITHUB_RUN_ID}
           curl \
             -X POST \
             -H "Accept: application/vnd.github.v3+json" \
