@@ -18,17 +18,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: sdafadsfasdf
+        id: step
         run: |
-          echo ${GITHUB_REPOSITORY}
-          echo ${GITHUB_RUN_ID}
-
-          curl \
-            -X POST \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/cancel
+          echo "::set-output name=env::$(echo preview)"
 
       - name: Send slack if completed
-        if: ${{ success() }}
+        if: ${{ success() && env != preview }}
         uses: ./.github/actions/slack-notify
         with:
           region: ${{ matrix.region }}
@@ -37,7 +32,7 @@ jobs:
           domain: ${{ matrix.domain }}
 
       - name: Send slack if completed
-        if: ${{ failure() }}
+        if: ${{ failure() && env != preview }}
         uses: ./.github/actions/slack-notify
         with:
           region: ${{ matrix.region }}
